@@ -1,60 +1,48 @@
 using System;
-using System.Data.SqlClient;
+using System.Data.Common;
+using MySqlConnector;
 
-namespace Client
+namespace ChatroomWithUserIdentification
 {
-    class Program
+    public class SignUpAndSignIn
     {
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Sign Up");
+        }
 
-            Console.Write("Enter username or create account (NEW): ");
-            string username = Console.ReadLine();
-            if (username == "NEW" || username == "new")
-            {
-                CreateNewAccount();
-            }
+        public bool SignIn(string username, string password)
+        {
 
-            Console.Write("Enter password or create account (NEW): ");
-            string password = Console.ReadLine();
+            
 
-            bool isPasswordValid = VerifyPasswordFromDatabase(username, password);
-
-            if (isPasswordValid)
+            if (VerifyPasswordFromDatabase(username, password))
             {
                 Console.WriteLine("Password is valid. Proceed!");
-            }
-            else if (password == "NEW" || password == "new")
-            {
-                CreateNewAccount();
+                return true;
             }
             else
             {
+
                 Console.WriteLine("Invalid username or password. Try again.");
             }
 
-            Console.ReadLine();
+            return false;
         }
 
-        private static void CreateNewAccount()
+        public bool CreateNewAccount(string newUsername, string newPassword)
         {
-            Console.Write("Enter a new username: ");
-            string newUsername = Console.ReadLine();
 
-            Console.Write("Enter a new password: ");
-            string newPassword = Console.ReadLine();
+            string connectionString = "Server=localhost;Database=users;User Id=root;Password=;";
 
-            string connectionString = "add database connection string here";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (DbConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO [user] (username, password) VALUES (@Username, @Password)";
-                    SqlCommand command = new SqlCommand(query, connection);
+                    string query = "INSERT INTO user (username, password) VALUES (@Username, @Password)";
+                    MySqlCommand command = new MySqlCommand(query,(MySqlConnection) connection);
                     command.Parameters.AddWithValue("@Username", newUsername);
                     command.Parameters.AddWithValue("@Password", newPassword);
 
@@ -62,32 +50,39 @@ namespace Client
 
                     if (rowsAffected > 0)
                     {
+
                         Console.WriteLine("Account created successfully!");
+                        return true;
                     }
                     else
                     {
+                        
                         Console.WriteLine("Failed to create account.");
+                        return false;
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("An error occurred: " + ex.Message);
+                    return false;
                 }
             }
+            return false;
         }
 
-        static bool VerifyPasswordFromDatabase(string username, string password)
+        private bool VerifyPasswordFromDatabase(string username, string password)
         {
-            string connectionString = "add database connection string here";
+            
+            string connectionString = "Server=localhost;Database=users;User Id=root;Password=;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) FROM [user] WHERE username = @Username AND password = @Password";
-                    SqlCommand command = new SqlCommand(query, connection);
+                    string query = "SELECT COUNT(*) FROM user WHERE username = @Username AND password = @Password";
+                    MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@Password", password);
 
@@ -101,5 +96,6 @@ namespace Client
                 }
             }
         }
+
     }
 }

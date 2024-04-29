@@ -43,6 +43,12 @@
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ChatroomWithUserIdentification.csproj">
+        <Project>{034b89fc-76c3-489b-8cab-70ebf3118834}</Project>
+        <Name>ChatroomWithUserIdentification</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatroomWithUserIdentification", "ChatroomWithUserIdentification.csproj", "{034B89FC-76C3-489B-8CAB-70EBF3118834}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicServerFunctionality", "BasicServerFunctionality\BasicServerFunctionality.csproj", "{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSideOfTheChat", "..\FormSideOfTheChat\FormSideOfTheChat.csproj", "{67E17FC0-564C-425A-9470-DF469E6D62AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{034B89FC-76C3-489B-8CAB-70EBF3118834}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034B89FC-76C3-489B-8CAB-70EBF3118834}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{034B89FC-76C3-489B-8CAB-70EBF3118834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67E17FC0-564C-425A-9470-DF469E6D62AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E17FC0-564C-425A-9470-DF469E6D62AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E17FC0-564C-425A-9470-DF469E6D62AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E17FC0-564C-425A-9470-DF469E6D62AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
