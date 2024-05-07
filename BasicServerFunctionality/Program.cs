@@ -25,7 +25,6 @@ namespace BasicServerFunctionality
             IPEndPoint ipEndPointClient = (IPEndPoint) socketClient.RemoteEndPoint;
             Console.WriteLine ("Client connected:{0} at port {1}", ipEndPointClient.Address,
                 ipEndPointClient.Port);
-            attempt.SignIn();
             socketClient.Close (); 
             socket.Close ();
             

@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatroomWithUserIdentificat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicServerFunctionality", "BasicServerFunctionality\BasicServerFunctionality.csproj", "{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSideOfTheChat", "..\FormSideOfTheChat\FormSideOfTheChat.csproj", "{67E17FC0-564C-425A-9470-DF469E6D62AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormSideOfTheChat", "..\FormSideOfTheChat\FormSideOfTheChat.csproj", "{67E17FC0-564C-425A-9470-DF469E6D62AC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{651C40F5-349F-4E6C-B7ED-9464A6AA9BEF} = {651C40F5-349F-4E6C-B7ED-9464A6AA9BEF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

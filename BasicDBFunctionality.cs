@@ -81,7 +81,7 @@ namespace ChatroomWithUserIdentification
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) FROM user WHERE username = @Username AND password = @Password";
+                    string query = "SELECT COUNT(*) FROM users.user WHERE username = @Username AND password = @Password";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@Password", password);
