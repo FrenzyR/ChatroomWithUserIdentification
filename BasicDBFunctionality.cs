@@ -51,12 +51,8 @@ namespace ChatroomWithUserIdentification
                         Console.WriteLine("Account created successfully!");
                         return true;
                     }
-                    else
-                    {
-                        
-                        Console.WriteLine("Failed to create account.");
-                        return false;
-                    }
+                    Console.WriteLine("Failed to create account.");
+                    return false;
                 }
                 catch (Exception ex)
                 {
@@ -64,10 +60,9 @@ namespace ChatroomWithUserIdentification
                     return false;
                 }
             }
-            return false;
         }
 
-        private bool VerifyPasswordFromDatabase(string username, string password)
+        public bool VerifyPasswordFromDatabase(string username, string password)
         {
             
             string connectionString = "Server=localhost;Database=users;User Id=root;Password=;";
@@ -78,16 +73,15 @@ namespace ChatroomWithUserIdentification
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) FROM users.user WHERE username = @Username AND password = @Password";
+                    string query = "SELECT COUNT(*) FROM user WHERE username = @Username AND password = @Password";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@Password", password);
 
-                    int count = (int)command.ExecuteScalar();
-
-                    return count > 0;
+                    object count = command.ExecuteScalar();
+                    return count != null && int.Parse(count.ToString()) > 0;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return false;
                 }

@@ -24,7 +24,7 @@ namespace BasicServerFunctionality
             while (true)
             {
                 Socket socketClient = socket.Accept();
-                Thread thread = new Thread(hiloCliente);
+                Thread thread = new Thread(clientThread);
                 thread.Start(socketClient);
 
             }
@@ -33,7 +33,7 @@ namespace BasicServerFunctionality
 
         }
 
-        static void hiloCliente(object socket)
+        static void clientThread(object socket)
         {
             SignUpAndSignIn signUpAndSignIn = new SignUpAndSignIn();
             string message;
@@ -45,13 +45,14 @@ namespace BasicServerFunctionality
             using (StreamReader streamReader = new StreamReader(networkStream))
             using (StreamWriter streamWriter = new StreamWriter(networkStream))
             {
-                string welcome = "Will you sign-in or register? \n'Register'\n'Sign in'";
+                string welcome = "Will you sign-in or register?\n'Register'\n'Sign in'";
                 string user;
                 string password;
-                streamWriter.WriteLine(welcome);
-                streamWriter.Flush();
+                
                 while (true)
                 {
+                    streamWriter.WriteLine(welcome);
+                    streamWriter.Flush();
                     try
                     {
                         message = streamReader.ReadLine();
@@ -62,10 +63,10 @@ namespace BasicServerFunctionality
                         {
                             streamWriter.WriteLine("Give me your username");
                             streamWriter.Flush();
-                            user = streamReader.ReadLine().ToLower();
+                            user = streamReader.ReadLine()?.ToLower();
                             streamWriter.WriteLine("Give me your password");
                             streamWriter.Flush();
-                            password = streamReader.ReadLine().ToLower();
+                            password = streamReader.ReadLine()?.ToLower();
 
                             if(signUpAndSignIn.SignIn(user, password))
                             {
