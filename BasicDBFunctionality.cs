@@ -7,9 +7,6 @@ namespace ChatroomWithUserIdentification
     public class SignUpAndSignIn
     {
 
-        public static void Main(string[] args)
-        {
-        }
 
         public bool SignIn(string username, string password)
         {
